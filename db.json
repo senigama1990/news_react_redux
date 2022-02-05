@@ -1,0 +1,29 @@
+{
+  "news": [
+    {
+      "id": 1,
+      "name": "Ukraine tensions: US alleges Russian plot to fake invasion pretext",
+      "description": "It alleged Moscow was likely to release a graphic video showing the attack on Russian territory or against Russian-speaking people in eastern Ukraine.",
+      "category": "Breaking news"
+    },
+    {
+      "id": 2,
+      "name": "Ukraine tensions: US alleges Russian plot to fake invasion pretext",
+      "description": "It alleged Moscow was likely to release a graphic video showing the attack on Russian territory or against Russian-speaking people in eastern Ukraine.",
+      "category": "sport news"
+    },
+    {
+      "id": 3,
+      "name": "Ukraine tensions: US alleges Russian plot to fake invasion pretext",
+      "description": "It alleged Moscow was likely to release a graphic video showing the attack on Russian territory or against Russian-speaking people in eastern Ukraine.",
+      "category": "world news"
+    },
+    {
+      "id": 4,
+      "name": "Ukraine tensions: US alleges Russian plot to fake invasion pretext",
+      "description": "It alleged Moscow was likely to release a graphic video showing the attack on Russian territory or against Russian-speaking people in eastern Ukraine.",
+      "category": "world news"
+    }
+  ],
+  "filters": ["all", "Breaking", "sport", "Hot", "world"]
+}
