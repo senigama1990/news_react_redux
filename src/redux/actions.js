@@ -16,3 +16,10 @@ export function newsFetchingError() {
     type: "NEWS_FETCHING_ERROR"
   }
 }
+
+export function newsCreated(news) {
+  return {
+    type: "NEWS_CREATED",
+    payload: news
+  }
+}

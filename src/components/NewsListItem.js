@@ -3,7 +3,7 @@ import React from 'react';
 function NewsListItem({ name, description, category }) {
   let elementClassName
   switch (category) {
-    case "Breaking news":
+    case "breaking news":
       elementClassName = "bg-danger bg-gradient"
       break;
     case "sport news":
