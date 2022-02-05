@@ -6,9 +6,11 @@ import {newsCreated}from '../redux/actions'
 
 function NewsAddForm() {
 
-  const [name, setName]=useState('')
-  const [description, setDescription]=useState('')
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
+
+  const { filters, filterLoadingStatus } = useSelector(state => state)
 
   const dispatch = useDispatch()
   const { request } = useHttp()
@@ -25,6 +27,22 @@ function NewsAddForm() {
     setDescription('')
     setCategory('')
   }
+
+  const renderFilters = (filters, status) => {
+    if (status === 'loading') {
+      return <option>loading options</option>
+    } else if (status === 'error') {
+      <option>Error options</option>
+    }
+
+    if (filters && filters.length > 0) {
+      return filters.map(({name, label}) => {
+        if (name === 'all') return
+        return <option key={name} value={name}>{ label}</option>
+      })
+    }
+  }
+
 
   return (
     <form className='border shadow-lg p-4 rounded' onSubmit={onSubmitHandler}>
@@ -59,9 +77,7 @@ function NewsAddForm() {
         <label style={{"color": "red"}} htmlFor="category" className='form-label'><b>Choose category of news</b></label>
         <select value={category} onChange={(e) => setCategory(e.target.value)} required className='form-select' name="category" id="category">
           <option>Choose news category...</option>
-          <option value="breaking news">Breaking news</option>
-          <option value="sport news">Sport news</option>
-          <option value="world news">World news</option>
+          {renderFilters(filters, filterLoadingStatus)}
         </select>
       </div>
       <button type="submit" className=' w-100 btn btn-dark shadow-lg text-light'>

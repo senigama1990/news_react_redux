@@ -49,3 +49,10 @@ export function activeFilterChanged(filter) {
     payload: filter
   }
 }
+
+export function newsDeleted(id) {
+  return {
+    type: 'NEWS_DELETED',
+    payload: id
+  }
+}

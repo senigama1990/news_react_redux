@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NewsListItem({ name, description, category }) {
+function NewsListItem({ name, description, category, onDelete }) {
   let elementClassName
   switch (category) {
     case "breaking news":
@@ -29,7 +29,7 @@ function NewsListItem({ name, description, category }) {
         style={{ "objextFit": "cover" }}
       />
       <span className='position-absolute top-0 start-100 translate-middle badge border rounded-pill bg-light'>
-        <button type='button' className='btn-close' aria-label='Close'></button>
+        <button onClick={onDelete} type='button' className='btn-close' aria-label='Close'></button>
       </span>
     </li>
   )
