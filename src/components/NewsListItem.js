@@ -10,7 +10,7 @@ function NewsListItem({ name, description, category }) {
       elementClassName = "bg-primary bg-gradient"
       break
     case "world news":
-      elementClassName = "bg-secondary bg-gradient"
+      elementClassName = "bg-success bg-gradient"
       break
   
     default:

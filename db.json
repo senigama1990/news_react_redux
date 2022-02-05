@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Ukraine tensions: US alleges Russian plot to fake invasion pretext",
       "description": "It alleged Moscow was likely to release a graphic video showing the attack on Russian territory or against Russian-speaking people in eastern Ukraine.",
-      "category": "Breaking news"
+      "category": "breaking news"
     },
     {
       "id": 2,
@@ -25,5 +25,5 @@
       "category": "world news"
     }
   ],
-  "filters": ["all", "Breaking", "sport", "Hot", "world"]
+  "filters": ["all", "breaking", "sport", "world"]
 }
