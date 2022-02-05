@@ -35,13 +35,40 @@
       "name": "123",
       "description": "123",
       "category": "world news"
+    },
+    {
+      "id": "6e48025e-9ea5-4688-abae-a7442c51bbfb",
+      "name": "Ukraine tensions: US alleges Russian plot to fake invasion pretext",
+      "description": "It alleged Moscow was likely to release a graphic video showing the attack on Russian territory or against Russian-speaking people in eastern Ukraine.",
+      "category": "breaking news"
+    },
+    {
+      "id": "619da2f8-4a94-46c5-bfd5-d079222f0b19",
+      "name": "2222",
+      "description": "22222",
+      "category": "sport news"
     }
   ],
   "filters": [
-    "all",
-    "Breaking",
-    "sport",
-    "Hot",
-    "world"
+    {
+      "name": "all",
+      "label": "All",
+      "className": "btn-outline-dark"
+    },
+    {
+      "name": "breaking news",
+      "label": "breaking news",
+      "className": "btn-danger"
+    },
+    {
+      "name": "sport news",
+      "label": "sport news",
+      "className": "btn-primary"
+    },
+    {
+      "name": "world news",
+      "label": "world news",
+      "className": "btn-success"
+    }
   ]
 }

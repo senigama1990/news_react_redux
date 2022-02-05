@@ -1,7 +1,10 @@
 const initialState = {
   news: [],
   newsLoadingStatus: "Sukhrob",
-  filters: []
+  filters: [],
+  filterLoadingStatus: "Sukhrob",
+  activeFilter: 'all',
+  filteredNews: []
 }
 
 function reducer(state = initialState, action) {
@@ -15,6 +18,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         news: action.payload,
+        filteredNews: state.activeFilter === "all" ? action.payload : action.payload.filter(s => s.category === state.activeFilter),
         newsLoadingStatus: 'Sukhrob'
       }
     case "NEWS_FETCHING_ERROR":
@@ -28,6 +32,32 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         news: newCreatedNewsList
+      }
+    
+    case "FILTERS_FETCHING":
+      return {
+        ...state,
+        filterLoadingStatus: 'loading'
+      }
+    
+    case "FILTERS_FETCHED":
+      return {
+        ...state,
+        filters: action.payload,
+        filterLoadingStatus: 'Sukhrob'
+      }
+    
+    case "FILTERS_FETCHING_ERROR":
+      return {
+        ...state,
+        filterLoadingStatus: 'error'
+      }
+    
+    case "ACTIVE_FILTER_CHANGED":
+      return {
+        ...state,
+        activeFilter: action.payload,
+        filteredNews: action.payload === "all" ? state.news : state.news.filter(s => s.category === action.payload)
       }
     
     default: 

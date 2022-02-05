@@ -23,3 +23,29 @@ export function newsCreated(news) {
     payload: news
   }
 }
+
+export function filtersFetching() {
+  return {
+    type: "FILTERS_FETCHING"
+  }
+}
+
+export function filtersFetched(filters) {
+  return {
+    type: "FILTERS_FETCHED",
+    payload: filters
+  }
+}
+
+export function filtersFetchingError() {
+  return {
+    type: "FILTERS_FETCHING_ERROR"
+  }
+}
+
+export function activeFilterChanged(filter) {
+  return {
+    type: "ACTIVE_FILTER_CHANGED",
+    payload: filter
+  }
+}

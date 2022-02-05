@@ -6,9 +6,10 @@ import Spinner from './Spinner';
 import Error from './Error';
 import NewsListItem from './NewsListItem';
 
+
 function NewsList() {
 
-  const { news, newsLoadingStatus } = useSelector(state => state)
+  const { filteredNews, filterLoadingStatus } = useSelector(state => state)
   const dispatch = useDispatch()
 
   const { request } = useHttp()
@@ -20,9 +21,9 @@ function NewsList() {
       .catch(() => dispatch(newsFetchingError()))
   }, [])
 
-  if (newsLoadingStatus === 'loading') {
+  if (filterLoadingStatus === 'loading') {
     return <Spinner />
-  } else if (newsLoadingStatus === 'error') {
+  } else if (filterLoadingStatus === 'error') {
     return <Error />
   }
 
@@ -35,7 +36,7 @@ function NewsList() {
     })
   }
 
-  const element = renderNewsList(news)
+  const element = renderNewsList(filteredNews)
 
   return (
     <ul>{element}</ul>
