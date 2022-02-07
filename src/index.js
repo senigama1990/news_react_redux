@@ -1,14 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, compose } from 'redux';
 import App from './components/App';
 import news from './redux/reducers/news'
 import filter from './redux/reducers/filter'
 import "./index.scss"
 
+const enhance = (createStore) => (...args) => {
+  const store = createStore(...args)  
+  const oldDispatch = store.dispatch
 
-const store = createStore(combineReducers({news, filter}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+  store.dispatch = (action) => {
+    if (typeof action === 'string') {
+      return oldDispatch({type: action})
+    }
+    return oldDispatch(action)
+  }
+  return store
+}
+
+
+const store = createStore(combineReducers({ news, filter }), compose(enhance, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) )
 
 ReactDOM.render(
   <React.StrictMode>

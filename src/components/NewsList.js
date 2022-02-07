@@ -28,7 +28,7 @@ function NewsList() {
   const { request } = useHttp()
 
   useEffect(() => {
-    dispatch(newsFetching())
+    dispatch('NEWS_FETCHING')
     request("http://localhost:3001/news")
       .then(data => dispatch(newsFetched(data)))
       .catch(() => dispatch(newsFetchingError()))
@@ -38,7 +38,7 @@ function NewsList() {
     request(`http://localhost:3001/news/${id}`, "DELETE")
       .then(data => console.log(data + 'deleted'))
       .then(dispatch(newsDeleted(id)))
-      .catch(err => console.log(err))
+      .catch(err => newsFetchingError())
   }, [])
 
   if (filterLoadingStatus === 'loading') {
