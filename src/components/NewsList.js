@@ -5,11 +5,24 @@ import { newsFetching, newsFetched, newsFetchingError, newsDeleted } from '../re
 import Spinner from './Spinner';
 import Error from './Error';
 import NewsListItem from './NewsListItem';
-
+import {CSSTransition, TransitionGroup}from 'react-transition-group'
+import {createSelector}from 'reselect'
+import './styles/news_list.css'
 
 function NewsList() {
-
-  const { filteredNews, filterLoadingStatus } = useSelector(state => state)
+  const filteredNewsSelected = createSelector(
+    (state) => state.filter.activeFilter,
+    (state) => state.news.news,
+    (filter, news) => {
+      if (filter === 'all') {
+        return news
+      } else {
+        return news.filter(s => s.category === filter)
+      }
+    }
+  )
+  const filteredNews = useSelector(filteredNewsSelected)
+  const filterLoadingStatus  = useSelector(state => state.filterLoadingStatus)
   const dispatch = useDispatch()
 
   const { request } = useHttp()
@@ -36,17 +49,27 @@ function NewsList() {
 
   const renderNewsList = (arr) => {
     if (arr.length === 0) {
-      return <h4 className='text-center mt-5'>News doesn't exsists</h4>
+      return (
+        <CSSTransition timeout={500} classNames='item'>
+          <h5 className='text-center mt-5'>News don't found</h5>
+        </CSSTransition>
+      )
     }
     return arr.map(({ id, ...props }) => {
-      return <NewsListItem key={id} onDelete={()=> onDelete(id)} {...props} />
+      return (
+        <CSSTransition key={id} timeout={500} classNames='item'>
+          <NewsListItem onDelete={() => onDelete(id)} {...props} />
+        </CSSTransition>
+      )
     }).reverse()
   }
 
   const element = renderNewsList(filteredNews)
 
   return (
-    <ul>{element}</ul>
+    <TransitionGroup component='ul'>
+      {element}
+    </TransitionGroup>
   )
 }
 

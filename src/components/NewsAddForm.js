@@ -10,7 +10,7 @@ function NewsAddForm() {
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
 
-  const { filters, filterLoadingStatus } = useSelector(state => state)
+  const { filters, filterLoadingStatus } = useSelector(state => state.filter)
 
   const dispatch = useDispatch()
   const { request } = useHttp()

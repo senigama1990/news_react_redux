@@ -1,5 +1,12 @@
 {
-  "news": [],
+  "news": [
+    {
+      "id": "dac40f9c-ea24-42e4-b1dd-121f521fe7a3",
+      "name": "qwe",
+      "description": "qwe",
+      "category": "breaking news"
+    }
+  ],
   "filters": [
     {
       "name": "all",

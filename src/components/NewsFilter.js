@@ -7,7 +7,7 @@ import Error from './Error'
 import { filtersFetching, filtersFetched, filtersFetchingError, activeFilterChanged } from "../redux/actions";
 
 function NewsFilter(props) {
-  const { filters, filterLoadingStatus, activeFilter } = useSelector(state => state);
+  const { filters, filterLoadingStatus, activeFilter } = useSelector(state => state.filter);
   const dispatch = useDispatch();
   const { request } = useHttp();
 
